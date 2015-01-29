@@ -1,4 +1,3 @@
-package cracking;
 
 public class FindCommonParent {
 
