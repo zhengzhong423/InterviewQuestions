@@ -1,4 +1,4 @@
-
+package cracking;
 public class FindSuccessor {
 
 	public static void main(String[] args) 
@@ -13,7 +13,9 @@ public class FindSuccessor {
 		FindSuccessor f=new FindSuccessor();
 		BinaryTree b=f.match(4,a);
 		BinaryTree result=f.successor(b);
-		System.out.println(result.num);
+			System.out.println(result.num);
+
+
 	}
 	public BinaryTree match(int num, BinaryTree a)
 	{

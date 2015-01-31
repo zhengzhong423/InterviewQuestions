@@ -1,3 +1,4 @@
+package cracking;
 
 public class StringRotation {
 
