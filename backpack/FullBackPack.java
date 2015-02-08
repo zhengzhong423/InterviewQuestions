@@ -5,8 +5,8 @@ import java.util.Arrays;
 public class FullBackPack {
 
 	public static void main(String[] args) {
-		int money[] = {1,2,5,21,25};
-		System.out.println(Number2(money, 5));
+		int money[] = {1,2,3,5,6,21,25};
+		System.out.println(Number2(money, 6));
 	}
 	
 	//iteration
@@ -22,11 +22,12 @@ public class FullBackPack {
 			{
 				if(i==0)
 				{
-					if( j==money[i])
-						opt[i][j]=1;
+					if(j>=money[i])
+						opt[i][j]=opt[i][j-money[i]];
+					continue;
 				}
-				else if(j>=money[i])
-					opt[i][j]=opt[i-1][j-money[i]]+opt[i-1][j];
+				if(j>=money[i])
+					opt[i][j]=opt[i][j-money[i]]+opt[i-1][j];
 				else
 					opt[i][j]=opt[i-1][j];
 			}

@@ -9,8 +9,24 @@ public class ParseInteger {
 	{
 		// your code goes here
 		ParseInteger i=new ParseInteger();
-		i.bruteforce("1003", 0, "");
-		System.out.println(i.result);
+		System.out.println(i.helperDP("1234"));
+	//	System.out.println(i.result);
+	}
+	public int helperDP(String str)
+	{
+		int[] opt=new int[str.length()+1];
+		opt[0]=1;
+		for(int i=1; i<=str.length(); i++)
+		{
+			if(str.charAt(i-1)>'0')
+				opt[i]=opt[i-1];
+			else
+			{
+				if(i>1 && str.charAt(i-2)>'0' && (str.charAt(i-2)<'2' || (str.charAt(i-2)=='2' && str.charAt(i-1)<'7')))
+					opt[i]+=opt[i-2];
+			}
+		}
+		return opt[str.length()];
 	}
 	public void bruteforce(String str, int index, String temp)
 	{

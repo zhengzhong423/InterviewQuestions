@@ -4,10 +4,28 @@ import java.util.*;
 
 public class Anagrams {
 
+	List<String> rs=new LinkedList<String>();
 	public static void main(String[] args) 
 	{	
 		Anagrams r=new Anagrams();
-		System.out.println(r.anagrams("d      o g","god       "));
+	//	System.out.println(r.anagrams("d      o g","god       "));
+		List<String> l=new LinkedList<String>();
+		l.add("");
+		r.anagrams("dog", 0, l);
+		System.out.println(r.rs);
+	}
+	public void anagrams(String s, int index, List<String> temp)
+	{
+		if(index==s.length())
+		{
+			rs.addAll(temp);
+			return;
+		}
+		List<String> tempRs=new LinkedList<String>();
+		for(String str: temp)
+			for(int i=0; i<=str.length(); i++)
+				tempRs.add(str.substring(0, i)+s.charAt(index)+str.substring(i));
+		anagrams(s, index+1, tempRs);
 	}
 	public HashMap<String,Integer> insert(String s)
 	{

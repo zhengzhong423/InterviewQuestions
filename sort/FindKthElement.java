@@ -4,9 +4,40 @@ public class FindKthElement {
 
 	public static void main(String[] args) { 
        int[] a = new int[] {1, 4, 6, 10};  
-       int[] b = new int[] {5, 8, 9};  
-        System.out.println(findKthElement(a, 0, 3, b,  0, 2, 7));  
-
+  //     int[] b = new int[] {5, 8, 9};  
+  //      System.out.println(findKthElement(a, 0, 3, b,  0, 2, 7));  
+       System.out.println(findKthElement2(a, 4));
+	}
+	public static int findKthElement2(int[] arr, int k)
+	{
+		int low=0;
+		int high=arr.length-1;
+		int n=arr.length;
+		while(true)
+		{
+			int pos=partition(arr, low, high);
+			if(pos==n-k)
+				return arr[pos];
+			if(pos>n-k)
+				high=pos-1;
+			if(pos<n-k)
+				low=pos+1;
+		}
+	}
+	public static int partition(int[] arr, int low, int high)
+	{
+		int temp=arr[high];
+		while(low<high)
+		{
+			while(low<high && arr[low]<temp)
+				low++;
+			arr[high]=arr[low];
+			while(high>low && arr[high]>temp)
+				high--;
+			arr[low]=arr[high];
+		}
+		arr[low]=temp;
+		return low;
 	}
 	public static int findKthElement(int[] a, int as, int ae, int[] b, int bs, int be, int k)
 	{

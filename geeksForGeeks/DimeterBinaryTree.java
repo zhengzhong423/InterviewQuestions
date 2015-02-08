@@ -17,6 +17,8 @@ public class DimeterBinaryTree {
 		{}
 	}
 	int max;
+	int maxWidth;
+	int minWidth;
 	public static void main(String[] args) {
 		// TODO 自动生成的方法存根
 		DimeterBinaryTree d=new DimeterBinaryTree();
@@ -24,9 +26,18 @@ public class DimeterBinaryTree {
 		  root.left        = d.new TreeNode();
 		  root.right       =d. new TreeNode();
 		  root.left.left  = d.new TreeNode();
-		  root.left.right =d. new TreeNode();
-		  d.getDiameter(root);
-		  System.out.println(d.max);
+		  root.right.right =d. new TreeNode();
+		  d.width(root, 0);
+		  System.out.println(d.maxWidth-d.minWidth+1);
+	}
+	public void width(TreeNode root, int num)
+	{
+		if(root==null)
+			return;
+		minWidth=Math.min(minWidth, num);
+		maxWidth=Math.max(maxWidth, num);
+		width(root.left, num-1);
+		width(root.right, num+1);
 	}
 	public int getDiameter(TreeNode root)
 	{

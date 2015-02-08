@@ -3,14 +3,14 @@ package leetCode;
 public class KMP {
 
 	public static void main(String[] args) {
-		System.out.println(strStr("abbabbbbcab","bbcab"));
+		System.out.println(strStr("mississippi","issip"));
 	}
 	public static int strStr(String haystack, String needle) {
-		int[] next=makeNext("abac".toCharArray());
+		int[] next=getNext("issip");
 		int j=0;
 		for(int i=0; i<haystack.length(); i++)
 		{
-			if(j>0 && haystack.charAt(i)!=needle.charAt(j))
+			if(haystack.charAt(i)!=needle.charAt(j))
 				j=next[j];
 			if(haystack.charAt(i)==needle.charAt(j))
 				j++;
@@ -20,6 +20,19 @@ public class KMP {
 		return -1;
 		
     }
+	 public static int[] getNext(String needle)
+	    {
+	        int[] next= new int[needle.length()];
+	        int j=0;
+	        for(int i=1; i<needle.length(); i++)
+	        {
+	            if(needle.charAt(i)==needle.charAt(j))
+	                j++;
+	            else
+	                next[i]=j;
+	        }
+	        return next;
+	    }
 	 public static int[] makeNext(char[] arr){
 		 	int len = arr.length;
 		    int[] next = new int[len];

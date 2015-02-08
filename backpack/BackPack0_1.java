@@ -1,15 +1,12 @@
 package backpack;
 
 
-public class BackPack0_1 {
+public class BackPack0_1{
 
 	public static void main(String[] args) {
-		int[] weight={3,4,5};
-		int[] value={4,5,6};
-		int[][] opt=helper(weight, value, 10);
-		getPath(opt, weight, value);
+		
 	}
-	public static int[][] helper(int[] weight, int[] value, int W)
+	public int[][] helper(int[] weight, int[] value, int W)
 	{
 		int[][] opt=new int[weight.length+1][W+1];
 		for(int i=1; i<=weight.length; i++)
