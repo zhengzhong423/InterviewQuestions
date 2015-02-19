@@ -1,4 +1,4 @@
-package backpack;
+package knapsack;
 
 
 public class BackPack0_1{

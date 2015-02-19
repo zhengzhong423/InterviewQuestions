@@ -1,14 +1,56 @@
-package backpack;
+package knapsack;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 public class FullBackPack {
 
+	HashMap<Integer, ArrayList<List<Integer>>> hash=new HashMap<Integer, ArrayList<List<Integer>>>(); 
+	
 	public static void main(String[] args) {
-		int money[] = {1,2,3,5,6,21,25};
-		System.out.println(Number2(money, 6));
+		FullBackPack fb=new FullBackPack();
+		int money[] = {1,2,3};
+		System.out.println(fb.Number3(money, 3));
+		System.out.println(fb.hash);
 	}
 	
+	public  int Number3(int[] money, int target)
+	{
+		for(int i=0; i<=target; i++)
+			hash.put(i, new ArrayList<List<Integer>>());
+		int[] opt=new int[target+1];
+		opt[0]=1;
+		for(int j=0; j<money.length; j++)
+		{
+			for(int i=0; i<=target; i++)
+				if(money[j]<=i)
+				{
+					if(money[j]==i)
+					{
+						ArrayList<List<Integer>> result=new ArrayList<List<Integer>>();
+						ArrayList<Integer> ar=new ArrayList<>();
+						ar.add(money[j]);
+						result.add(ar);
+						hash.get(i).addAll(result);
+					}
+					else if(hash.get(i-money[j]).size()!=0)
+					{
+						ArrayList<List<Integer>> result=new ArrayList<List<Integer>>(hash.get(i-money[j]));
+						for(List<Integer> temp: result)
+						{
+							List<Integer> tempRs=new LinkedList<>(temp);
+							tempRs.add(money[j]);
+							hash.get(i).add(tempRs);
+						}
+					}
+					opt[i]+=opt[i-money[j]];
+				}
+		}
+		return opt[target];
+	}
 	//iteration
 	// 0/1 fill the knapsack, or Subset Sum
 	// unlimited stuff fill the knapsack
@@ -27,12 +69,11 @@ public class FullBackPack {
 					continue;
 				}
 				if(j>=money[i])
-					opt[i][j]=opt[i][j-money[i]]+opt[i-1][j];
+					opt[i][j]+=opt[i][j-money[i]]+opt[i-1][j];
 				else
 					opt[i][j]=opt[i-1][j];
 			}
-		return opt[money.length-1][target];
-			
+		return opt[money.length-1][target];		
 	}
 	
 	// 0/1 fill the knapsack, or Subset Sum
