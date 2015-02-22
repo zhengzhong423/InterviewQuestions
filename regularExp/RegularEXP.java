@@ -20,7 +20,6 @@ public class RegularEXP {
 	}
 	public static void fileHelper()
 	{
-		// TODO 自动生成的方法存根
 				File file=new File("D://");
 				File[] ListFiles=file.listFiles();
 			/*	File[] parts=File.listRoots();

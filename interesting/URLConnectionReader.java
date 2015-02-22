@@ -16,7 +16,7 @@ public class URLConnectionReader {
 	static String USER_AGENT = "Mozilla/5.0";
 	
     public static void main(String[] args) throws Exception {
-    	String url = "https://ajax.googleapis.com/ajax/services/search/web?v=1.0&" + "q=BAIDU&userip=USERS-IP-ADDRESS";
+    	String url = "https://ajax.googleapis.com/ajax/services/search/web?v=1.0&" + "q=hot&userip=USERS-IP-ADDRESS";
     	 
 		URL obj = new URL(url);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
