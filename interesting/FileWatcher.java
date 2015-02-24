@@ -14,8 +14,8 @@ import java.nio.file.WatchService;
 public class FileWatcher {
 	
 	private WatchService watcher;
-	private static String base="D://cygwin//home//dell//nutch-trunk//runtime//local//";
-	private static String portal="Round5//linkdb//";
+	private static String base="D://cygwin//home//dell//runtime//local//";
+	private static String portal="Round15//linkdb//";
 	
 	public static void main(String[] args) {
 		try {
