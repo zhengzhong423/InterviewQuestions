@@ -4,9 +4,40 @@ public class CountAndSay {
 
 	public static void main(String[] args) {
 		
-		System.out.println(countAndSay(5));
+		System.out.println(countAndSay2(4));
 		System.out.println();
 	}
+    public static String countAndSay2(int n) {
+        if(n==0)
+            return "";
+        if(n==1)
+            return "1";
+            
+        String str="1";
+        String rs="";
+        
+        for(int j=2; j<=n; j++)
+        {
+            char buffer=str.charAt(0);
+            int count=1;
+            
+            for(int i=1; i<str.length(); i++)
+            {
+               if(buffer==str.charAt(i))
+                    count++;
+                else
+                {
+                    rs=rs+(String.valueOf(count)+buffer);
+                    buffer=str.charAt(i);
+                    count=1;
+                }
+            }
+            rs=rs+(String.valueOf(count)+buffer);
+            str=rs;
+            rs="";
+        }
+        return str;
+    }
 	   public static String countAndSay(int n) {
 	        String s="1";
 	        String temp="";

@@ -12,8 +12,8 @@ public class FullBackPack {
 	
 	public static void main(String[] args) {
 		FullBackPack fb=new FullBackPack();
-		int money[] = {1,2,3};
-		System.out.println(fb.Number3(money, 3));
+		int money[] = {1,5,2};
+		System.out.println(fb.backPackFull(money, 4));
 		System.out.println(fb.hash);
 	}
 	
@@ -92,7 +92,7 @@ public class FullBackPack {
 		sum+=Number(money, target, index+1);
 		return sum;
 	}
-	public static int backPackFull(int[] money, int target)
+	public int backPackFull(int[] money, int target)
 	{
 		int[][] opt=new int[money.length][target+1];
 		for(int i=0; i<opt.length; i++)
@@ -102,7 +102,7 @@ public class FullBackPack {
 			for(int j=0; j<=target; j++)
 			{
 				if(j>money[i])
-					opt[i][j]=Math.min(opt[i-1][j], Math.min(1+opt[i-1][j-money[i]], 1+opt[i][j-money[i]]));
+					opt[i][j]=Math.min(opt[i-1][j], 1+opt[i][j-money[i]]);
 				else if(j==money[i])
 					opt[i][j]=1;
 				else
