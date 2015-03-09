@@ -6,23 +6,41 @@ import java.util.List;
 public class FibInrange {
 	public static void main(String[] args)
 	{
-		System.out.println(new FibInrange().getNumbers(-1, 100000));
+		System.out.println(new FibInrange().getNumbers(0,12122436));
 	}
 	
-	public List<Long> getNumbers(int min, int max)
+	public List<Integer> getNumbers(int min, int max)
 	{
-		List<Long> rs=new LinkedList<Long>();
-		long num1=1;
-		if(num1>=min && num1<=max)
-			rs.add(num1);
-		long num2=2;
-		while(num2<=max)
-		{
-			if(num2>=min)
-				rs.add(num2);
-			num2=num1+num2;
-			num1=num2-num1;
-		}
+		List<Integer> rs=new LinkedList<Integer>();
+		for(int i=min; i<=max; i++)
+			if(valid(i))
+				rs.add(i);
 		return rs;
+	}
+
+	private boolean valid(int num) {
+		String s=String.valueOf(num);
+		for(int i=1; i<=3 && s.length()>=i; i++)
+		{
+			String seed=s.substring(0, i);
+			int base=Integer.parseInt(seed);
+			String result=String.valueOf(base*2);
+			String rs=seed+seed+result;
+			
+			int mul1=1;
+			int mul2=2;
+			
+			while(rs.length()<=s.length())
+			{
+				if(rs.equals(s))
+					return true;
+				if(!s.startsWith(rs))
+					break;
+				mul2=mul1+mul2;
+				mul1=mul2-mul1;
+				rs+=String.valueOf(base*mul2);
+			}
+		}
+		return false;
 	}
 }

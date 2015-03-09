@@ -4,7 +4,7 @@ public class VerifyPassword {
 
 	public static void main(String[] args) {
 		VerifyPassword v=new VerifyPassword(); 
-		System.out.println(v.helper("164", "18468"));
+		System.out.println(v.helper("1864", "18648"));
 	}
 	public boolean helper(String enter, String expected)
 	{

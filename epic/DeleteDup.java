@@ -3,7 +3,12 @@ package epic;
 public class DeleteDup {
 
 	public static void main(String[] args) {
-		System.out.println(helper("1004440056778"));
+		String src="100441440065556778";
+		while(src.length()!=helper(src).length())
+		{
+			src=helper(src);
+		}
+		System.out.println(src);
 	}
 	public static String helper(String s)
 	{
@@ -20,11 +25,15 @@ public class DeleteDup {
 			else
 			{
 				if(s.charAt(i)!=s.charAt(i-1) && s.charAt(i)!=s.charAt(i+1))
+				{
 					rs+=s.charAt(i);
+				}
 			}
 		}
 		if(s.charAt(s.length()-1)!=s.charAt(s.length()-2))
+		{
 			rs+=(s.charAt(s.length()-1));
+		}
 		return rs;
 	}
 

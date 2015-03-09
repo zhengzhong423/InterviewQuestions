@@ -4,7 +4,7 @@ public class ValidPassword {
 
 	public static void main(String[] args) {
 		ValidPassword v=new ValidPassword();
-		System.out.println(v.validPassword("1q123123"));
+		System.out.println(v.validPassword("1231aq123"));
 	}
 	public boolean validPassword(String s)
 	{
@@ -31,7 +31,7 @@ public class ValidPassword {
 	private boolean checkSequence(String s) {
 		
 		for(int len=1; len<s.length(); len++)
-			for(int i=0; i<s.length(); i++)
+			for(int i=0; i<=s.length()-2*len; i++)
 			{
 				int j=i+len;
 				int nextStart=j;

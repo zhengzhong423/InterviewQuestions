@@ -30,8 +30,12 @@ public class AddivalNumber {
 			p.poll();
 			p.poll();
 			p.poll();
+			int count=1;
 			while(!p.isEmpty())
-				rs+=(double)(p.poll())/(double)(arr.length-3);
+			{
+				rs=rs+(p.poll()-rs)/count;
+				count++;
+			}
 		}
 		else
 			return 0.0f;
