@@ -2,16 +2,25 @@ package multiThread;
 
 public class Thread2 extends Thread {
 		int k=200;
+		Object lock;
+		
+		public Thread2(Object lock) {
+			this.lock=lock;
+		}
+		
 		public void run()
 		{
 			while(k-->0)
 			{
-				System.out.println("2");
-				
-				try {
-					sleep(4);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
+				synchronized(lock)
+				{
+						System.out.println("222");
+						lock.notify();
+						try {
+							lock.wait();
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
 				}
 			}
 		}

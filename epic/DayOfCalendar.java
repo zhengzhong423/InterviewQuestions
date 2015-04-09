@@ -7,7 +7,7 @@ public class DayOfCalendar{
 	public static void main(String[] args)
 	{
 		DayOfCalendar d=new DayOfCalendar();
-		d.getWeek(2016, 3, 1);
+		d.getWeek(2015, 2, 28);
 	}
 
 	public void getWeek(int year, int month, int day)

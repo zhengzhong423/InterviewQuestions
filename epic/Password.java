@@ -61,6 +61,16 @@ public class Password {
 						visited[i]=0;
 					}
 				}
+				else if(s.length()%2==1 &&(temp.length()==s.length()/2-1))
+				{
+					if(isVowel(s.charAt(i)))
+					{
+						visited[i]=1;
+						String str=temp+s.charAt(i);
+						validPass(s, str, visited);
+						visited[i]=0;
+					}
+				}
 				else
 				{
 					visited[i]=1;

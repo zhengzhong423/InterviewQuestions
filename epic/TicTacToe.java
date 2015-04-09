@@ -3,9 +3,9 @@ package epic;
 public class TicTacToe {
 	
 	static int[][] matrix={
-			{1,0,0,0},
-			{1,0,0,0},
-			{1,0,0,0},
+			{1,0,1,0},
+			{0,1,0,0},
+			{1,0,1,0},
 			{1,1,1,1}
 	};
 	
@@ -30,7 +30,23 @@ public class TicTacToe {
 			System.out.println("Player1: "+point[0]);
 			System.out.println("Player2: "+point[1]);
 	}
-
+	private void horizon(int[][] matrix, int i, int j, int k) {
+		if(record[i][j][0]!=0)
+			return;
+		
+		int original=j;
+		while(j<matrix.length && matrix[i][j]==k)
+		{
+			record[i][j][0]=1;
+			j++;
+		}
+		
+		if(j-original>=4)
+			point[k]+=2;
+		else if(j-original==3)
+			point[k]+=1;
+	}
+	
 	private void vertical(int[][] matrix, int i, int j, int k) {	//DFS search
 		if(record[i][j][1]!=0)
 			return;
@@ -75,23 +91,6 @@ public class TicTacToe {
 		{
 			record[i][j][3]=1;
 			i--;
-			j++;
-		}
-		
-		if(j-original>=4)
-			point[k]+=2;
-		else if(j-original==3)
-			point[k]+=1;
-	}
-
-	private void horizon(int[][] matrix, int i, int j, int k) {
-		if(record[i][j][0]!=0)
-			return;
-		
-		int original=j;
-		while(j<matrix.length && matrix[i][j]==k)
-		{
-			record[i][j][0]=1;
 			j++;
 		}
 		

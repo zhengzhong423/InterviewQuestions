@@ -23,7 +23,7 @@ public class SecurityKeyPad {
 	{
 		SecurityKeyPad p=new SecurityKeyPad();
 		
-			System.out.println(p.helper("11147", "22247"));
+			System.out.println(p.helper("11115", "22247"));
 			
 		
 	}

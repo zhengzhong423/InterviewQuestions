@@ -1,25 +1,50 @@
 package leetCode;
 
+
 public class KMP {
 
 	public static void main(String[] args) {
 		System.out.println(strStr("mississippi","issip"));
 	}
 	public static int strStr(String haystack, String needle) {
-		int[] next=getNext("issip");
+		int[] next=getKMP("issip");
 		int j=0;
 		for(int i=0; i<haystack.length(); i++)
 		{
-			if(haystack.charAt(i)!=needle.charAt(j))
-				j=next[j];
+//			if(haystack.charAt(i)!=needle.charAt(j))
+//				j=next[j];
+//			if(haystack.charAt(i)==needle.charAt(j))
+//				j++;
+			
 			if(haystack.charAt(i)==needle.charAt(j))
-				j++;
+                j++;
+            else
+                j=next[j];
 			if(j==needle.length())
 				return 1+i-j;
 		}
 		return -1;
 		
     }
+	
+	 public static int[] getKMP(String needle)
+	    {
+	        int[] kmp=new int[needle.length()];
+	        int len=0;
+	        
+	        for(int i=1; i<needle.length(); i++)
+	        {
+	            if(needle.charAt(i)==needle.charAt(len))
+	                len++;
+	            else
+	            {
+	                kmp[i]=len==0? 0:len;
+	                len=0;
+	            }
+	        }
+	        return kmp;
+	    }
+	 
 	 public static int[] getNext(String needle)
 	    {
 	        int[] next= new int[needle.length()];

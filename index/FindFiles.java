@@ -12,7 +12,7 @@ public class FindFiles {
 //			return;
 //		}
 //		String key=args[0];
-		String key="dia";
+		String key="median";
 		File ufile=new File(des);
 		File[] files=ufile.listFiles();
 		for(File file: files)

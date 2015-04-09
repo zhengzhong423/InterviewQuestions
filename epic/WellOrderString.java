@@ -6,7 +6,7 @@ import java.util.List;
 public class WellOrderString {
 
 	List<String> rs=new LinkedList<String>();
-	int length=0;
+	int length;
 	public static void main(String[] args) {
 		WellOrderString w=new WellOrderString();
 		System.out.println(w.permutation(6));

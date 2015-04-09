@@ -4,7 +4,7 @@ public class FindSeed {
 
 	public static void main(String[] args) {
 		FindSeed f=new FindSeed();
-		f.helper(1111);
+		f.helper(1716);
 	}
 	public void helper(Integer k)
 	{
